@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Piazza – Authentic Italian Pizza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">🍕</span>
+        <span class="logo-text">La <em>Piazza</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="reserve-btn">Reserve a Table</button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-circle c1"></div>
+      <div class="hero-circle c2"></div>
+      <div class="hero-circle c3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">🔥 Wood-Fired Since 1987</p>
+      <h1 class="hero-title">
+        Crafted with<br /><em>Passion &amp; Fire</em>
+      </h1>
+      <p class="hero-sub">
+        Authentic Neapolitan pizza made with hand-stretched dough, San Marzano tomatoes,
+        and imported Italian cheeses — baked in our 900°F wood-fired oven.
+      </p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-primary">Explore Our Menu</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>35+</strong><span>Years Open</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>50+</strong><span>Pizza Recipes</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>10K+</strong><span>Happy Guests</span></div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-ring"></div>
+      <img
+        src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&q=80"
+        alt="Wood-fired pizza"
+        class="hero-img"
+      />
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-imgs">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80" alt="Our kitchen" class="about-img-main" />
+        <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=300&q=80" alt="Wood fire oven" class="about-img-accent" />
+        <div class="about-badge">
+          <span class="badge-num">35</span>
+          <span class="badge-txt">Years of<br/>Excellence</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-tag">About La Piazza</p>
+        <h2 class="section-title">A Family Tradition<br />Born in Naples</h2>
+        <p>Since 1987, La Piazza has been bringing the heart of Naples to every plate. Our master pizzaiolos hand-stretch each dough ball, layering flavors that have been perfected across generations.</p>
+        <p>We source only the finest ingredients: '00' flour milled in Italy, DOP-certified mozzarella di bufala, and hand-crushed San Marzano tomatoes. Every pizza tells a story — and we want yours to be unforgettable.</p>
+        <div class="about-features">
+          <div class="feature"><span>🌿</span> Fresh Local Ingredients</div>
+          <div class="feature"><span>🔥</span> 900°F Wood-Fired Oven</div>
+          <div class="feature"><span>🇮🇹</span> Authentic Italian Recipes</div>
+          <div class="feature"><span>👨‍🍳</span> Master Pizzaiolos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU / PRODUCTS ===== -->
+  <section class="menu" id="menu">
+    <div class="menu-header">
+      <p class="section-tag">Our Recipes</p>
+      <h2 class="section-title">Handcrafted Pizzas &amp;<br />Italian Recipes</h2>
+      <p class="menu-sub">Discover our curated collection of recipes — from classic Margherita to bold gourmet creations.</p>
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search recipes…" />
+        <button id="searchBtn">Search</button>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+      <!-- JS injects cards here -->
+    </div>
+
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p>Loading delicious recipes…</p>
+    </div>
+
+    <div class="error-state hidden" id="errorState">
+      <p>😕 Oops! Could not load recipes. Please try again.</p>
+      <button onclick="loadRecipes()">Retry</button>
+    </div>
+
+    <div class="load-more-wrap">
+      <button class="btn-primary" id="loadMoreBtn" style="display:none" onclick="loadMore()">
+        Load More Recipes
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <p class="section-tag">Find Us</p>
+        <h2 class="section-title">Visit La Piazza</h2>
+        <div class="info-item"><span>📍</span><div><strong>Address</strong><br/>12 Via Roma, Naples District</div></div>
+        <div class="info-item"><span>🕐</span><div><strong>Hours</strong><br/>Mon–Sun: 11:00 AM – 11:00 PM</div></div>
+        <div class="info-item"><span>📞</span><div><strong>Phone</strong><br/>+1 (555) 263-7482</div></div>
+        <div class="info-item"><span>✉️</span><div><strong>Email</strong><br/>hello@lapiazza.com</div></div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>Reserve Your Table</h3>
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Email Address" />
+        </div>
+        <div class="form-group">
+          <input type="date" />
+          <input type="number" placeholder="Guests" min="1" max="20" />
+        </div>
+        <textarea placeholder="Special requests…"></textarea>
+        <button class="btn-primary full-width">Confirm Reservation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-icon">🍕</span>
+          <span class="logo-text">La <em>Piazza</em></span>
+        </a>
+        <p>Bringing the authentic taste of Naples to your table since 1987. Made with love, fire, and the finest Italian ingredients.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Twitter / X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed &amp; Built by <strong>Mohammad Saleh</strong> &nbsp;|&nbsp; &copy; <span id="year"></span> La Piazza. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
